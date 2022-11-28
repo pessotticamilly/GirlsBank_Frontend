@@ -8,14 +8,13 @@ function Login() {
     return (
         <div id="Login">
             <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "25%" }} />
-            {/* <TextField error helperText="CPF inválido" /> */}
 
             <TextField id="senha" type="password" label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "25%" }} />
 
             <Button id="entrar" variant="contained" sx={{ marginBottom: "1rem" }}>Entrar</Button>
 
             <p>É novo por aqui?</p>
-            <Link href="/cadastro" underline="hover" sx={{ fontSize: "12px" }}>Cadastrar-se</Link>
+            <Link href="/cadastro" underline="hover">Cadastrar-se</Link>
         </div>
     )
 }

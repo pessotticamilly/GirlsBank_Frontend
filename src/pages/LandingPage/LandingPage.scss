@@ -1,0 +1,121 @@
+@import '../../Variables.scss';
+
+#LandingPage {
+    height: 100vh;
+    width: 100vw;
+
+    header {
+        align-items: center;
+        display: flex;
+        height: 8vh;
+        justify-content: space-between;
+        padding: 0 2rem;
+        width: 100%;
+    
+        #logo {
+            height: 80%;
+            width: auto;
+    
+            img {
+                align-items: center;
+                display: flex;
+                height: 100%;
+                justify-content: center;
+                overflow: hidden;
+                width: 100%;
+            }
+        }
+    
+        #nav {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            justify-content: flex-end;
+            width: auto;
+    
+            a {
+                color: $azul03;
+                text-decoration: none;
+                margin-left: 2rem;
+    
+                &:hover {
+                    color: $azul01;
+                    cursor: pointer;
+                }
+            }
+    
+            #localizacao {
+                border-bottom: 2px solid $azul01;
+    
+                &:hover {
+                    color: $azul03;
+                }
+            }
+        }
+    }
+
+    main {
+        align-items: center;
+        display: flex;
+        height: 92vh;
+        justify-content: center;
+        padding: 0 4rem;
+        width: 100%;
+
+        #container01 {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            width: 30%;
+
+            #box {
+                align-items: flex-start;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                justify-content: center;
+                width: 100%;
+
+                #text01 {
+                    height: auto;
+                    width: 100%;
+
+                    p {
+                        color: $azul01;
+                    }
+                }
+
+                #text02 {
+                    height: auto;
+                    margin-bottom: 2rem;
+                    width: 100%;
+
+                    p {
+                        color: $azul03;
+                        font-size: 96px;
+                        font-weight: 900;
+                    }
+                }
+
+                #row {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+        }
+
+        #container02 {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            width: 70%;
+
+            img {
+                height: auto;
+                width: 100%;
+            }
+        }
+    }
+}
