@@ -44,7 +44,7 @@ function LandingPage() {
                 </div>
 
                 <div id="container02">
-                    <img src={FundoLandingPage} alt="Fundo Landing Page" />
+                    <img src={FundoLandingPage} alt="Fundo da landing page" />
                 </div>
             </main>
         </div>

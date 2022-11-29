@@ -1,0 +1,67 @@
+@import '../../Variables.scss';
+
+#Cadastro {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
+
+    #container01 {
+        align-items: center;
+        background-color: $azul01;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        width: 40%;
+
+        #text01 {
+            align-items: center;
+            display: flex;
+            height: auto;
+            justify-content: center;
+            margin: 0 0 2rem 0;
+            width: 100%;
+
+            p {
+                color: #fff;
+                font-size: 32px;
+                font-weight: 700;
+            }
+        }
+
+        #text02 {
+            align-items: center;
+            display: flex;
+            height: auto;
+            justify-content: center;
+            margin: 0 0 4rem 0;
+            text-align: center;
+            width: 60%;
+
+            p {
+                color: #fff;
+            }
+        }
+
+        #text03 {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            justify-content: center;
+            margin: 0 0 1rem 0;
+            width: 100%;
+
+            p {
+                color: #fff;
+            }
+        }
+    }
+
+    #container02 {
+        height: 100%;
+        width: 60%;
+    }
+}
