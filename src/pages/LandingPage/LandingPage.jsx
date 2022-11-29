@@ -1,6 +1,8 @@
 import './LandingPage.scss';
 
 import Button from '@mui/material/Button';
+
+// Fotos
 import FundoLandingPage from '../../assets/FundoLandingPage.jpg';
 import Logo from '../../assets/Logo.png';
 

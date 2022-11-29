@@ -1,9 +1,16 @@
 import './Inicio.scss';
+import '../../Variables.scss';
 
-import Container from '@mui/material/Container';
-import Logo from '../../assets/Logo.png';
+import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton';
+
+// Fotos
+import Logo from '../../assets/Logo.png';
+
+// Icones
+import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 function Inicio() {
@@ -16,14 +23,32 @@ function Inicio() {
 
                 <div id="nav">
                     <IconButton>
-                        <NotificationsIcon />
+                        <NotificationsIcon sx={{ color: "#1976d2" }} />
                     </IconButton>
 
                     <IconButton sx={{ marginLeft: 2 }}>
-                        <SettingsIcon />
+                        <PersonIcon sx={{ color: "#1976d2" }} />
+                    </IconButton>
+
+                    <IconButton sx={{ marginLeft: 2 }}>
+                        <SettingsIcon sx={{ color: "#1976d2" }} />
+                    </IconButton>
+
+                    <IconButton sx={{ marginLeft: 2 }}>
+                        <LogoutIcon sx={{ color: "#1976d2" }} />
                     </IconButton>
                 </div>
             </header>
+
+            <main>
+                <div id="text01">
+                    <p>Bom dia Camilly!</p>
+                </div>
+
+                <div id="container01">
+                    aaaa
+                </div>
+            </main>
         </div>
     );
 };

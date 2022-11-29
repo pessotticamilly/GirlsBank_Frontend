@@ -53,4 +53,32 @@
             }
         }
     }
+
+    main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 92vh;
+        justify-content: center;
+        width: 100%;
+
+        #text01 {
+            align-items: center;
+            display: flex;
+            height: auto;
+            justify-content: center;
+            margin: 2rem 0 0 0;
+            width: 100%;
+
+            p{
+                font-size: 24px;
+            }
+        }
+
+        #container01 {
+            height: 100%;
+            margin: 2rem 0 0 0;
+            width: 60%;
+        }
+    }
 }

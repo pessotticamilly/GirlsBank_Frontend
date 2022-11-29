@@ -1,9 +1,11 @@
 import './Cadastro.scss';
 
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
+
+// Icones
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 function Cadastro() {
     return (
