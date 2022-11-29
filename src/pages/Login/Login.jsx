@@ -1,20 +1,53 @@
 import './Login.scss';
+import '../../Variables.scss';
 
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
+import Logo from '../../assets/Logo.png'
+import RemoveRedEyeRoundedIcon from "@mui/icons-material/RemoveRedEyeRounded";
 import TextField from '@mui/material/TextField';
+import { useState } from "react";
+import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 
 function Login() {
+    const [tipo, setTipo] = useState("password");
+
+    function mostrarSenha() {
+        if (tipo == "text") {
+            setTipo("password");
+        } else {
+            setTipo("text");
+        };
+    };
+
     return (
         <div id="Login">
-            <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "20%" }} />
+            <div id="container01">
+                <IconButton sx={{ margin: "1rem 0 0 1rem" }} onClick={() => {
+                        window.location.href = "/"
+                    }} >
+                    <ArrowBackIcon sx={{ color: "#666" }} />
+                </IconButton>
+            </div>
 
-            <TextField id="senha" type="password" label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "20%" }} />
+            <div id="container02">
+                <img src={Logo} alt="Logo" />
 
-            <Button id="entrar" variant="contained" sx={{ marginBottom: "1rem" }}>Entrar</Button>
+                <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "20%" }} />
 
-            <p>É novo por aqui?</p>
-            <Link href="/cadastro" underline="hover">Cadastrar-se</Link>
+                <TextField id="senha" type={tipo} label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "20%" }} InputProps={{
+                    endAdornment: (tipo == "text" ? <VisibilityOffRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} /> : <RemoveRedEyeRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} />)
+                }} />
+
+                <Button id="entrar" variant="contained" sx={{ marginBottom: "1rem" }} onClick={() => {
+                    window.location.href = "/inicio"
+                }}>Entrar</Button>
+
+                <p>É novo por aqui?</p>
+                <Link href="/cadastro" underline="hover">Cadastrar-se</Link>
+            </div>
         </div>
     )
 }

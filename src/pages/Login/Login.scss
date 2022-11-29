@@ -7,4 +7,24 @@
     height: 100vh;
     justify-content: center;
     width: 100vw;
+
+    #container01 {
+        height: auto;
+        width: 100%;
+    }
+
+    #container02 {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+
+        img {
+            height: auto;
+            margin-bottom: 2rem;
+            width: 10vw;
+        }
+    }
 }
