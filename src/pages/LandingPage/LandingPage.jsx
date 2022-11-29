@@ -1,4 +1,4 @@
-import './LandingPage.scss'
+import './LandingPage.scss';
 
 import Button from '@mui/material/Button';
 import FundoLandingPage from '../../assets/FundoLandingPage.jpg';
@@ -48,7 +48,7 @@ function LandingPage() {
                 </div>
             </main>
         </div>
-    )
-}
+    );
+};
 
-export default LandingPage
+export default LandingPage;

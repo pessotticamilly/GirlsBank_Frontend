@@ -1,4 +1,4 @@
-import './Cadastro.scss'
+import './Cadastro.scss';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Button from '@mui/material/Button';
@@ -50,11 +50,17 @@ function Cadastro() {
 
                     <TextField id="email" type="text" label="Email" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} />
 
-                    <TextField id="senha" type="text" label="Senha" variant="outlined" sx={{ width: "50%" }} />
+                    <TextField id="senha" type="text" label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "50%" }} />
+
+                    <div id="box02">
+                        <Button variant="contained" onClick={() => {
+                            window.location.href="/login";
+                        }}>Confirmar</Button>
+                    </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Cadastro
+export default Cadastro;

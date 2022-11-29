@@ -107,6 +107,14 @@
             height: auto;
             justify-content: center;
             width: 100%;
+
+            #box02 {
+                align-items: center;
+                display: flex;
+                height: auto;
+                justify-content: flex-end;
+                width: 50%;
+            }
         }
     }
 }

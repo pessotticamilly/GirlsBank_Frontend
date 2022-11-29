@@ -26,8 +26,8 @@ function Login() {
         <div id="Login">
             <div id="container01">
                 <IconButton sx={{ margin: "1rem 0 0 1rem" }} onClick={() => {
-                        window.location.href = "/"
-                    }} >
+                    window.location.href = "/"
+                }} >
                     <ArrowBackIcon sx={{ color: "#666" }} />
                 </IconButton>
             </div>
@@ -49,7 +49,7 @@ function Login() {
                 <Link href="/cadastro" underline="hover">Cadastrar-se</Link>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
