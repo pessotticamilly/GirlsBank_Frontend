@@ -100,13 +100,26 @@
                 width: 100%;
 
                 .box01 {
+                    align-items: center;
                     background-color: #eee;
                     border-radius: 1rem;
                     box-shadow: 5px 5px 10px 0 #00000025;
+                    display: flex;
+                    flex-direction: column;
                     height: 80%;
+                    justify-content: center;
                     width: 15vw;
 
+                    img {
+                        height: 10vh;
+                        margin-bottom: 1rem;
+                        overflow: hidden;
+                        width: auto;
+                    }
+
                     &:hover {
+                        cursor: pointer;
+                        
                         p {
                             color: $azul01;
                         }
@@ -118,19 +131,29 @@
 
     #fundo {
         align-items: center;
-        background-color: #00000025;
+        background-color: #00000050;
         display: flex;
         height: 100vh;
         justify-content: center;
         left: 0;
+        position: absolute;
         top: 0;
         width: 100vw;
 
         #modal {
             background-color: #fff;
             border-radius: 1rem;
+            box-shadow: 5px 5px 10px 0 #00000025;
             height: 60vh;
             width: 40vw;
+
+            #row {
+                align-items: center;
+                display: flex;
+                justify-content: flex-end;
+                height: auto;
+                width: 100%;
+            }
         }
     }
 }

@@ -1,10 +1,18 @@
 import './Inicio.scss';
 
+import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
+import Modal from '@mui/material/Modal';
 import Tooltip from '@mui/material/Tooltip';
 
 // Fotos
+import Depositar from '../../assets/Depositar.png';
 import Logo from '../../assets/Logo.png';
+import Pagar from '../../assets/Pagar.png';
+import Pix from '../../assets/Pix.png';
+import Poupanca from '../../assets/Poupança.png';
+import Recarregar from '../../assets/Recarregar.png'
+import Transferir from '../../assets/Transferir.png';
 
 // Icones
 import CloseIcon from '@mui/icons-material/Close';
@@ -13,29 +21,79 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-function operacao(operacao) {
-    return (
-        <div id="fundo">
-            <div id="modal">
-                <div id="row">
-                    <Tooltip title="Fechar">
-                        <IconButton>
-                            <CloseIcon sx={{ color: "#999" }} />
-                        </IconButton>
-                    </Tooltip>
-                </div>
-
-                {operacao ? "pix" : <></> 
-                ? "transferir" : <></> 
-                ? "depositar" : <></>}
-            </div>
-        </div>
-    );
-};
-
 function Inicio() {
+    const [open, setOpen] = React.useState(false);
+    const [operacao, setOperacao] = React.useState('');
+
+    function handleClick(_operacao) {
+        setOperacao(_operacao);
+        setOpen(true);
+    };
+
+    React.useEffect(() => {
+        console.log(operacao)
+        console.log(open)
+    }, [operacao, open])
+
+    function modal() {
+        return (
+            <div id="fundo" open={true}>
+                <div id="modal">
+                    <div id="row">
+                        <Tooltip title="Fechar">
+                            <IconButton onClick={() => setOpen(!open)}>
+                                <CloseIcon sx={{ color: "#999" }} />
+                            </IconButton>
+                        </Tooltip>
+                    </div>
+                    {verOperacao()}
+                </div>
+            </div>
+        );
+    };
+
+    function verOperacao() {
+        if (operacao === "pix") {
+            return pix();
+        };
+
+        if (operacao === "transferir") {
+            return transferir();
+        };
+
+        if (operacao === "depositar") {
+            return depositar();
+        };
+    };
+
+    function pix() {
+        return (
+            <>
+                <p>Pix</p>
+            </>
+        );
+    };
+
+    function transferir() {
+        return (
+            <>
+                <p>Transferir</p>
+            </>
+        );
+    };
+
+    function depositar() {
+        return (
+            <>
+                <p>Depositar</p>
+            </>
+        );
+    };
+
     return (
         <div id="Inicio">
+            {open && modal(operacao)}
+
             <header>
                 <div id="logo">
                     <img src={Logo} alt="Logo" />
@@ -81,29 +139,35 @@ function Inicio() {
 
                 <div id="container02">
                     <div className="container03">
-                        <div className="box01" onClick={operacao("pix")}>
+                        <div className="box01" onClick={() => handleClick("pix")} >
+                            <img src={Pix} alt="Pix" />
                             <p>Pix</p>
                         </div>
 
                         <div className="box01">
+                            <img src={Pagar} alt="Pagar" />
                             <p>Pagar conta</p>
                         </div>
 
-                        <div className="box01" onClick={operacao("transferir")}>
+                        <div className="box01" onClick={() => handleClick("transferir")} >
+                            <img src={Transferir} alt="Transferir" />
                             <p>Transferir</p>
                         </div>
                     </div>
 
                     <div className="container03">
-                        <div className="box01" onClick={operacao("depositar")}>
+                        <div className="box01" onClick={() => handleClick("depositar")} >
+                            <img src={Depositar} alt="Depositar" />
                             <p>Depositar</p>
                         </div>
 
                         <div className="box01">
+                            <img src={Poupanca} alt="Poupança" />
                             <p>Poupança</p>
                         </div>
 
                         <div className="box01">
+                            <img src={Recarregar} alt="Recarregar" />
                             <p>Recarregar</p>
                         </div>
                     </div>
