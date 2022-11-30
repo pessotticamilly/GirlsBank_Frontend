@@ -153,7 +153,8 @@ function Inicio() {
                 </div>
 
                 <div id="container01">
-                    <p>R$ 200,00</p>
+                    <p>Número da conta:</p>
+                    <p>Saldo: R$</p>
                 </div>
 
                 <div id="container02">
