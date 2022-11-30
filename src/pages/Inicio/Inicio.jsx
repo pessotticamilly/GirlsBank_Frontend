@@ -81,7 +81,7 @@ function Inicio() {
                 <div id="text02">
                     <p>Transferir</p>
                 </div>
-                
+
                 <TextField id="numeroConta" type="number" label="Número da conta" variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
 
                 <TextField id="valor" type="number" label="Valor" variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
@@ -93,8 +93,14 @@ function Inicio() {
 
     function depositar() {
         return (
-            <div id="operacao">
+           <div id="operacao">
+                <div id="text02">
+                    <p>Depositar</p>
+                </div>
 
+                <TextField id="valor" type="number" label="Valor" variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
+
+                <Button id="entrar" variant="contained">Confirmar</Button>
             </div>
         );
     };
