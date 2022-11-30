@@ -51,9 +51,9 @@ function Cadastro() {
 
                     <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} />
 
-                    <TextField id="telefone" type="text" label="Telefone" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} />
+                    <TextField id="telefone" type="number" label="Telefone" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} />
 
-                    <TextField id="email" type="text" label="Email" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} />
+                    <TextField id="email" type="email" label="Email" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} />
 
                     <TextField id="senha" type="text" label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "50%" }} />
 

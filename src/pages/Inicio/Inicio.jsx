@@ -153,13 +153,13 @@ function Inicio() {
                 </div>
 
                 <div id="container01">
-                    <p>Número da conta:</p>
+                    <p>Número da conta: 0000</p>
                     <p>Saldo: R$</p>
                 </div>
 
                 <div id="container02">
                     <div className="container03">
-                        <div className="box01" /*onClick={() => handleClick("pix")}*/ >
+                        <div className="box01" >
                             <img src={Pix} alt="Pix" />
                             <p>Pix</p>
                         </div>
