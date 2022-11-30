@@ -1,4 +1,5 @@
 import './Inicio.scss';
+import { useState, useEffect } from 'react';
 
 import * as React from 'react';
 import Button from '@mui/material/Button';
@@ -21,23 +22,32 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
+import axios from 'axios';
 
 function Inicio() {
-    const [open, setOpen] = React.useState(false);
-    const [operacao, setOperacao] = React.useState('');
+    const [open, setOpen] = useState(false);
+    const [operacao, setOperacao] = useState('');
+
+    const [saldo, setSaldo] = useState(0);
+
 
     let pessoa = JSON.parse(localStorage.getItem('PESSOA'));
 
     let primeiroNome = pessoa.nomeCompleto.split(" ")[0];
+
+    useEffect(() => {
+        axios.get(`http://localhost:8080/girlsbank/conta/pessoa/${pessoa.id}`)
+            .then((response) => {
+                setSaldo(response.data.saldo)
+            });
+    }, [])
 
     function handleClick(_operacao) {
         setOperacao(_operacao);
         setOpen(true);
     };
 
-    React.useEffect(() => {
-        console.log(operacao)
-        console.log(open)
+    useEffect(() => {
     }, [operacao, open])
 
     function modal() {
@@ -97,7 +107,7 @@ function Inicio() {
 
     function depositar() {
         return (
-           <div id="operacao">
+            <div id="operacao">
                 <div id="text02">
                     <p>Depositar</p>
                 </div>
@@ -153,7 +163,7 @@ function Inicio() {
                 </div>
 
                 <div id="container01">
-                    <p>R$ 200,00</p>
+                    <p>R$ {saldo}</p>
                 </div>
 
                 <div id="container02">
