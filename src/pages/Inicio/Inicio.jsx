@@ -3,6 +3,7 @@ import '../../Variables.scss';
 
 import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 // Fotos
 import Logo from '../../assets/Logo.png';
@@ -22,31 +23,71 @@ function Inicio() {
                 </div>
 
                 <div id="nav">
-                    <IconButton>
-                        <NotificationsIcon sx={{ color: "#1976d2" }} />
-                    </IconButton>
+                    <Tooltip title="Notificações">
+                        <IconButton>
+                            <NotificationsIcon sx={{ color: "#1976d2" }} />
+                        </IconButton>
+                    </Tooltip>
 
-                    <IconButton sx={{ marginLeft: 2 }}>
-                        <PersonIcon sx={{ color: "#1976d2" }} />
-                    </IconButton>
+                    <Tooltip title="Meu perfil">
+                        <IconButton sx={{ marginLeft: 2 }}>
+                            <PersonIcon sx={{ color: "#1976d2" }} />
+                        </IconButton>
+                    </Tooltip>
 
-                    <IconButton sx={{ marginLeft: 2 }}>
-                        <SettingsIcon sx={{ color: "#1976d2" }} />
-                    </IconButton>
+                    <Tooltip title="Configurações">
+                        <IconButton sx={{ marginLeft: 2 }}>
+                            <SettingsIcon sx={{ color: "#1976d2" }} />
+                        </IconButton>
+                    </Tooltip>
 
-                    <IconButton sx={{ marginLeft: 2 }}>
-                        <LogoutIcon sx={{ color: "#1976d2" }} />
-                    </IconButton>
+                    <Tooltip title="Sair">
+                        <IconButton sx={{ marginLeft: 2 }}>
+                            <LogoutIcon sx={{ color: "#1976d2" }} onClick={() => {
+                                window.location.href = "/";
+                            }} />
+                        </IconButton>
+                    </Tooltip>
                 </div>
             </header>
 
             <main>
                 <div id="text01">
-                    <p>Bom dia Camilly!</p>
+                    <p>Bom dia, Camilly!</p>
                 </div>
 
                 <div id="container01">
-                    aaaa
+                    <p>R$ 200,00</p>
+                </div>
+
+                <div id="container02">
+                    <div className="container03">
+                        <div className="box01">
+                            <p>Pix</p>
+                        </div>
+
+                        <div className="box01">
+                            <p>Pagar conta</p>
+                        </div>
+
+                        <div className="box01">
+                            Transferir
+                        </div>
+                    </div>
+
+                    <div className="container03">
+                        <div className="box01">
+                            Depositar
+                        </div>
+
+                        <div className="box01">
+                            Poupança
+                        </div>
+
+                        <div className="box01">
+                            Recarregar
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
