@@ -26,6 +26,10 @@ function Inicio() {
     const [open, setOpen] = React.useState(false);
     const [operacao, setOperacao] = React.useState('');
 
+    let pessoa = JSON.parse(localStorage.getItem('PESSOA'));
+
+    let primeiroNome = pessoa.nomeCompleto.split(" ")[0];
+
     function handleClick(_operacao) {
         setOperacao(_operacao);
         setOpen(true);
@@ -81,7 +85,7 @@ function Inicio() {
                 <div id="text02">
                     <p>Transferir</p>
                 </div>
-                
+
                 <TextField id="numeroConta" type="number" label="Número da conta" variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
 
                 <TextField id="valor" type="number" label="Valor" variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
@@ -139,7 +143,7 @@ function Inicio() {
 
             <main>
                 <div id="text01">
-                    <p>Bom dia, Camilly!</p>
+                    <p>Bom dia, {primeiroNome}!</p>
                 </div>
 
                 <div id="container01">
