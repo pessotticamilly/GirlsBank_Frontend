@@ -1,7 +1,5 @@
 import './Inicio.scss';
-import '../../Variables.scss';
 
-import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -9,10 +7,31 @@ import Tooltip from '@mui/material/Tooltip';
 import Logo from '../../assets/Logo.png';
 
 // Icones
+import CloseIcon from '@mui/icons-material/Close';
 import LogoutIcon from '@mui/icons-material/Logout';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
+
+function operacao(operacao) {
+    return (
+        <div id="fundo">
+            <div id="modal">
+                <div id="row">
+                    <Tooltip title="Fechar">
+                        <IconButton>
+                            <CloseIcon sx={{ color: "#999" }} />
+                        </IconButton>
+                    </Tooltip>
+                </div>
+
+                {operacao ? "pix" : <></> 
+                ? "transferir" : <></> 
+                ? "depositar" : <></>}
+            </div>
+        </div>
+    );
+};
 
 function Inicio() {
     return (
@@ -62,7 +81,7 @@ function Inicio() {
 
                 <div id="container02">
                     <div className="container03">
-                        <div className="box01">
+                        <div className="box01" onClick={operacao("pix")}>
                             <p>Pix</p>
                         </div>
 
@@ -70,22 +89,22 @@ function Inicio() {
                             <p>Pagar conta</p>
                         </div>
 
-                        <div className="box01">
-                            Transferir
+                        <div className="box01" onClick={operacao("transferir")}>
+                            <p>Transferir</p>
                         </div>
                     </div>
 
                     <div className="container03">
-                        <div className="box01">
-                            Depositar
+                        <div className="box01" onClick={operacao("depositar")}>
+                            <p>Depositar</p>
                         </div>
 
                         <div className="box01">
-                            Poupança
+                            <p>Poupança</p>
                         </div>
 
                         <div className="box01">
-                            Recarregar
+                            <p>Recarregar</p>
                         </div>
                     </div>
                 </div>
@@ -93,12 +112,5 @@ function Inicio() {
         </div>
     );
 };
-
-/*
-pix
-pagar
-transferir
-depositar
-*/
 
 export default Inicio;

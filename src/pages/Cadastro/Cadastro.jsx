@@ -3,6 +3,7 @@ import './Cadastro.scss';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
 
 // Icones
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -12,11 +13,13 @@ function Cadastro() {
         <div id="Cadastro">
             <div id="container01">
                 <div id="box01">
-                    <IconButton sx={{ margin: "1rem 0 0 1rem" }} onClick={() => {
-                        window.location.href = "/"
-                    }} >
-                        <ArrowBackIcon sx={{ color: "#fff" }} />
-                    </IconButton>
+                    <Tooltip title="Voltar">
+                        <IconButton sx={{ margin: "1rem 0 0 1rem" }} onClick={() => {
+                            window.location.href = "/"
+                        }} >
+                            <ArrowBackIcon sx={{ color: "#fff" }} />
+                        </IconButton>
+                    </Tooltip>
                 </div>
 
                 <div id="box02">
@@ -56,7 +59,7 @@ function Cadastro() {
 
                     <div id="box02">
                         <Button variant="contained" onClick={() => {
-                            window.location.href="/login";
+                            window.location.href = "/login";
                         }}>Confirmar</Button>
                     </div>
                 </div>

@@ -105,8 +105,32 @@
                     box-shadow: 5px 5px 10px 0 #00000025;
                     height: 80%;
                     width: 15vw;
+
+                    &:hover {
+                        p {
+                            color: $azul01;
+                        }
+                    }
                 }
             }
+        }
+    }
+
+    #fundo {
+        align-items: center;
+        background-color: #00000025;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        left: 0;
+        top: 0;
+        width: 100vw;
+
+        #modal {
+            background-color: #fff;
+            border-radius: 1rem;
+            height: 60vh;
+            width: 40vw;
         }
     }
 }
