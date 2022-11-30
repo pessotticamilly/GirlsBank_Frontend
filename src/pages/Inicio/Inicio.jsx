@@ -1,8 +1,9 @@
 import './Inicio.scss';
 
 import * as React from 'react';
+import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 
 // Fotos
@@ -66,27 +67,35 @@ function Inicio() {
         };
     };
 
-    function pix() {
-        return (
-            <>
-                <p>Pix</p>
-            </>
-        );
-    };
+    // function pix() {
+    //     return (
+    //         <div id="operacao">
+    //             <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
+    //         </div>
+    //     );
+    // };
 
     function transferir() {
         return (
-            <>
-                <p>Transferir</p>
-            </>
+            <div id="operacao">
+                <div id="text02">
+                    <p>Transferir</p>
+                </div>
+                
+                <TextField id="numeroConta" type="number" label="Número da conta" variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
+
+                <TextField id="valor" type="number" label="Valor" variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
+
+                <Button id="entrar" variant="contained">Confirmar</Button>
+            </div>
         );
     };
 
     function depositar() {
         return (
-            <>
-                <p>Depositar</p>
-            </>
+            <div id="operacao">
+
+            </div>
         );
     };
 
@@ -139,7 +148,7 @@ function Inicio() {
 
                 <div id="container02">
                     <div className="container03">
-                        <div className="box01" onClick={() => handleClick("pix")} >
+                        <div className="box01" /*onClick={() => handleClick("pix")}*/ >
                             <img src={Pix} alt="Pix" />
                             <p>Pix</p>
                         </div>

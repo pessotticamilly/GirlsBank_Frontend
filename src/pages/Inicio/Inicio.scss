@@ -71,7 +71,8 @@
             width: 100%;
 
             p {
-                font-size: 24px;
+                font-size: 32px;
+                font-weight: 700;
             }
         }
 
@@ -141,11 +142,16 @@
         width: 100vw;
 
         #modal {
+            align-items: center;
             background-color: #fff;
             border-radius: 1rem;
             box-shadow: 5px 5px 10px 0 #00000025;
-            height: 60vh;
-            width: 40vw;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            justify-content: center;
+            padding: 1rem;
+            width: auto;
 
             #row {
                 align-items: center;
@@ -153,6 +159,31 @@
                 justify-content: flex-end;
                 height: auto;
                 width: 100%;
+            }
+
+            #operacao {
+                align-items: flex-end;
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                justify-content: center;
+                padding: 2rem 6rem 4rem 6rem;
+                width: auto;
+
+                #text02 {
+                    align-items: center;
+                    display: flex;
+                    height: auto;
+                    justify-content: center;
+                    margin-bottom: 4rem;
+                    width: 100%;
+
+                    p {
+                        color: $azul01;
+                        font-size: 24px;
+                        font-weight: 700;
+                    }
+                }
             }
         }
     }
