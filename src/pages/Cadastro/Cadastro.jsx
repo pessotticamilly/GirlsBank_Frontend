@@ -80,9 +80,7 @@ function Cadastro() {
 
                     <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setCpf(e.target.value) }} />
 
-                    <TextField id="telefone" type="text" label="Telefone" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setTelefone(e.target.value) }} />
-
-                    <TextField id="email" type="text" label="Email" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setEmail(e.target.value) }} />
+                    <TextField id="email" type="email" label="Email" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setEmail(e.target.value) }} />
 
                     <TextField id="senha" type="text" label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "50%" }} onChange={(e) => { setSenha(e.target.value) }} />
 

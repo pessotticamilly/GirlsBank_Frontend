@@ -29,6 +29,7 @@ function Inicio() {
     const [operacao, setOperacao] = useState('');
 
     const [saldo, setSaldo] = useState(0);
+    const [numeroConta, setNumeroConta] = useState();
 
 
     let pessoa = JSON.parse(localStorage.getItem('PESSOA'));
@@ -39,6 +40,7 @@ function Inicio() {
         axios.get(`http://localhost:8080/girlsbank/conta/pessoa/${pessoa.id}`)
             .then((response) => {
                 setSaldo(response.data.saldo)
+                setNumeroConta(response.data.numero)    
             });
     }, [])
 
@@ -163,12 +165,13 @@ function Inicio() {
                 </div>
 
                 <div id="container01">
+                    <p>Número da conta: {numeroConta}</p>
                     <p>R$ {saldo}</p>
                 </div>
 
                 <div id="container02">
                     <div className="container03">
-                        <div className="box01" /*onClick={() => handleClick("pix")}*/ >
+                        <div className="box01" >
                             <img src={Pix} alt="Pix" />
                             <p>Pix</p>
                         </div>
