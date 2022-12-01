@@ -27,7 +27,6 @@ import axios from 'axios';
 function Inicio() {
     const [open, setOpen] = useState(false);
     const [operacao, setOperacao] = useState('');
-    const [saldo, setSaldo] = useState(0);
     const [valor, setValor] = useState(0);
     const [numeroContaTrans, setNumeroContaTrans] = useState();
     const [pessoa, setPessoa] = useState(JSON.parse(localStorage.getItem("PESSOA")));
@@ -99,6 +98,9 @@ function Inicio() {
         window.location.reload();
     }
 
+    useEffect(() => {
+    }, [valor, conta])
+
     function transferir() {
         return (
             <div id="operacao">
@@ -109,16 +111,13 @@ function Inicio() {
                 <form>
                     <TextField id="numeroConta" type="number" label="Número da conta" required onChange={(e) => setNumeroContaTrans(e.target.value)} variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
 
-                    <TextField id="valor" type="number" label="Valor" required onChange={(e) => setValor(parseInt(e.target.value))} variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
+                    <TextField id="valor" error={valor > conta.saldo} helperText={valor > conta.saldo && "Saldo insuficiente"} type="number" label="Valor" required onChange={(e) => setValor(parseInt(e.target.value))} variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
 
                     <Button id="entrar" type="submit" variant="contained" onClick={transferencia}>Confirmar</Button>
                 </form>
             </div>
         );
     };
-
-    useEffect(() => {
-    }, [conta, saldo])
 
     function deposito(deposito) {
         const contaPut = {
@@ -142,7 +141,7 @@ function Inicio() {
                 </div>
 
                 <form>
-                    <TextField id="valor" type="number" label="Valor" required variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} onChange={(e) => { setValor(parseInt(e.target.value)) }} />
+                    <TextField id="valor" type="number" label="Valor" error={valor > conta.saldo} helperText={valor > conta.saldo && "Saldo insuficiente"} required variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} onChange={(e) => { setValor(parseInt(e.target.value)) }} />
 
                     <Button id="entrar" type="submit" variant="contained" onClick={() => deposito(_deposito)} >Confirmar</Button>
                 </form>
