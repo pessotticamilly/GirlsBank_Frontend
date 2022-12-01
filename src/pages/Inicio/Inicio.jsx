@@ -27,31 +27,24 @@ import axios from 'axios';
 function Inicio() {
     const [open, setOpen] = useState(false);
     const [operacao, setOperacao] = useState('');
-
     const [saldo, setSaldo] = useState(0);
-    const [numeroConta, setNumeroConta] = useState();
-
-
-    let pessoa = JSON.parse(localStorage.getItem('PESSOA'));
-
-    let primeiroNome = pessoa.nomeCompleto.split(" ")[0];
+    const [valor, setValor] = useState(0);
+    const [numeroContaTrans, setNumeroContaTrans] = useState();
+    const [pessoa, setPessoa] = useState(JSON.parse(localStorage.getItem("PESSOA")));
+    const [conta, setConta] = useState({numero: 0, saldo: 0, pessoa: {id: 0, nomeCompleto: "", cpf: 0, senha: "", telefone: 0, email: ""}});
 
     useEffect(() => {
         axios.get(`http://localhost:8080/girlsbank/conta/pessoa/${pessoa.id}`)
-            .then((response) => {
-                setSaldo(response.data.saldo)
-                setNumeroConta(response.data.numero)    
-            });
+        .then((response) => {
+            setConta(response.data)
+        })
     }, [])
 
     function handleClick(_operacao) {
         setOperacao(_operacao);
         setOpen(true);
     };
-
-    useEffect(() => {
-    }, [operacao, open])
-
+    
     function modal() {
         return (
             <div id="fundo" open={true}>
@@ -68,29 +61,50 @@ function Inicio() {
             </div>
         );
     };
-
+    
     function verOperacao() {
-        if (operacao === "pix") {
-            return pix();
+        if(operacao === "pagarConta") {
+            return depositar(false);
         };
 
         if (operacao === "transferir") {
             return transferir();
         };
-
+        
         if (operacao === "depositar") {
-            return depositar();
+            return depositar(true);
         };
     };
 
-    // function pix() {
-    //     return (
-    //         <div id="operacao">
-    //             <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
-    //         </div>
-    //     );
-    // };
+    async function transferencia() {
+        const contaPagante = {
+            numero: conta.numero,
+            saldo: (conta.saldo - valor),
+            pessoa: conta.pessoa
+        };
 
+        axios.put(`http://localhost:8080/girlsbank/conta/editar/${conta.numero}`, contaPagante)
+        .then((response) => {
+            console.log("Contapagante", response);
+        });
+
+
+        const contaRecebedor = await axios.get(`http://localhost:8080/girlsbank/conta/listar/${numeroContaTrans}`)
+        .then(response => response.data)
+        
+        console.log("ContaRecebedorAxios", contaRecebedor);
+
+        contaRecebedor.saldo += valor;
+
+        axios.put(`http://localhost:8080/girlsbank/conta/editar/${contaRecebedor.numero}`, contaRecebedor)
+        .then((response) => {
+            console.log("Contarecebedor", response);
+        });
+
+
+        window.location.reload();
+    }
+    
     function transferir() {
         return (
             <div id="operacao">
@@ -98,25 +112,47 @@ function Inicio() {
                     <p>Transferir</p>
                 </div>
 
-                <TextField id="numeroConta" type="number" label="Número da conta" variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
+                <TextField id="numeroConta" type="number" label="Número da conta" value={numeroContaTrans} onChange={(e) => setNumeroContaTrans(e.target.value)} variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
 
-                <TextField id="valor" type="number" label="Valor" variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
+                <TextField id="valor" type="number" label="Valor" value={valor} onChange={(e) => setValor(parseInt(e.target.value))} variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
 
-                <Button id="entrar" variant="contained">Confirmar</Button>
+                <Button id="entrar" variant="contained" onClick={transferencia}>Confirmar</Button>
             </div>
         );
     };
+    
+    useEffect(() => {
+        console.log(conta);
+        console.log(saldo);
+    }, [conta, saldo])
 
-    function depositar() {
+    function deposito(deposito) {
+        const contaPut = {
+            numero: conta.numero,
+            saldo: deposito ? (conta.saldo + valor) : (conta.saldo - valor),
+            pessoa: conta.pessoa
+        }
+
+        console.log("conta", contaPut);
+
+        axios.put(`http://localhost:8080/girlsbank/conta/editar/${conta.numero}`, contaPut)
+        .then((response) => {
+            console.log(response);
+        });
+
+        window.location.reload();
+    };
+
+    function depositar(_deposito) {
         return (
             <div id="operacao">
                 <div id="text02">
-                    <p>Depositar</p>
+                    <p>{deposito ? "Depositar" : "Pagar Conta"}</p>
                 </div>
 
-                <TextField id="valor" type="number" label="Valor" variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
+                <TextField id="valor" type="number" label="Valor" variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} value={valor} onChange={(e) => { setValor(parseInt(e.target.value)) }} />
 
-                <Button id="entrar" variant="contained">Confirmar</Button>
+                <Button id="entrar" variant="contained" onClick={() => deposito(_deposito)} >Confirmar</Button>
             </div>
         );
     };
@@ -124,7 +160,6 @@ function Inicio() {
     return (
         <div id="Inicio">
             {open && modal(operacao)}
-
             <header>
                 <div id="logo">
                     <img src={Logo} alt="Logo" />
@@ -161,12 +196,12 @@ function Inicio() {
 
             <main>
                 <div id="text01">
-                    <p>Bom dia, {primeiroNome}!</p>
+                    <p>Bom dia, {conta.pessoa.nomeCompleto ?? ""}!</p>
                 </div>
 
                 <div id="container01">
-                    <p>Número da conta: {numeroConta}</p>
-                    <p>R$ {saldo}</p>
+                    <p>Número da conta: {conta.numero}</p>
+                    <p>R$ {conta.saldo}</p>
                 </div>
 
                 <div id="container02">
@@ -176,7 +211,7 @@ function Inicio() {
                             <p>Pix</p>
                         </div>
 
-                        <div className="box01">
+                        <div className="box01" onClick={() => handleClick("pagarConta")} >
                             <img src={Pagar} alt="Pagar" />
                             <p>Pagar conta</p>
                         </div>
