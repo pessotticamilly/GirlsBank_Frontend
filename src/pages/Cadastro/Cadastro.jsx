@@ -11,12 +11,20 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function Cadastro() {
-
     const [nome, setNome] = useState("");
     const [cpf, setCpf] = useState("");
     const [telefone, setTelefone] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [tipo, setTipo] = useState("password");
+
+    function mostrarSenha() {
+        if (tipo == "text") {
+            setTipo("password");
+        } else {
+            setTipo("text");
+        };
+    };
 
     let pessoa = {
         nomeCompleto: nome,
@@ -84,7 +92,9 @@ function Cadastro() {
 
                     <TextField id="telefone" type="text" label="Telefone" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setTelefone(e.target.value) }} />
 
-                    <TextField id="senha" type="text" label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "50%" }} onChange={(e) => { setSenha(e.target.value) }} />
+                    <TextField id="senha" type={tipo} label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "50%" }} onChange={(e) => { setSenha(e.target.value) }} InputProps={{
+                        endAdornment: (tipo == "text" ? <VisibilityOffRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} /> : <RemoveRedEyeRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} />)
+                    }} />
 
                     <div id="box02">
                         <Button variant="contained" onClick={() => cadastrar()}>Confirmar</Button>

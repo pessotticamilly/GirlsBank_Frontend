@@ -17,7 +17,6 @@ import RemoveRedEyeRoundedIcon from "@mui/icons-material/RemoveRedEyeRounded";
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 
 function Login() {
-    // window.location.href = "/inicio"
     const [cpf, setCpf] = useState("");
     const [senha, setSenha] = useState("");
     const [tipo, setTipo] = useState("password");
