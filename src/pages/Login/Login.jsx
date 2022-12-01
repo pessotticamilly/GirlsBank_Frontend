@@ -61,13 +61,15 @@ function Login() {
             <div id="container02">
                 <img src={Logo} alt="Logo" />
 
-                <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "20%" }} onChange={(e) => { setCpf(e.target.value) }} />
+                <form>
+                    <TextField id="cpf" type="number" label="CPF" required variant="outlined" sx={{ marginBottom: "2rem", width: "20%" }} onChange={(e) => { setCpf(e.target.value) }} />
 
-                <TextField id="senha" type={tipo} label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "20%" }} onChange={(e) => { setSenha(e.target.value) }} InputProps={{
-                    endAdornment: (tipo == "text" ? <VisibilityOffRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} /> : <RemoveRedEyeRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} />)
-                }} />
+                    <TextField id="senha" type={tipo} label="Senha" required variant="outlined" sx={{ marginBottom: "4rem", width: "20%" }} onChange={(e) => { setSenha(e.target.value) }} InputProps={{
+                        endAdornment: (tipo == "text" ? <VisibilityOffRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} /> : <RemoveRedEyeRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} />)
+                    }} />
 
-                <Button id="entrar" variant="contained" sx={{ marginBottom: "1rem" }} onClick={() => entrar()}>Entrar</Button>
+                    <Button id="entrar" type="submit" variant="contained" sx={{ marginBottom: "1rem" }} onClick={() => entrar()}>Entrar</Button>
+                </form>
 
                 <p>É novo por aqui?</p>
                 <Link href="/cadastro" underline="hover">Cadastrar-se</Link>

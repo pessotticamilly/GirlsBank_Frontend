@@ -86,21 +86,23 @@ function Cadastro() {
                 </div>
 
                 <div id="box01">
-                    <TextField id="nomeCompleto" type="text" label="Nome Completo" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setNome(e.target.value) }} />
+                    <form>
+                        <TextField id="nomeCompleto" type="text" label="Nome Completo" required variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setNome(e.target.value) }} />
 
-                    <TextField id="cpf" type="number" label="CPF" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setCpf(e.target.value) }} />
+                        <TextField id="cpf" type="number" label="CPF" required variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setCpf(e.target.value) }} />
 
-                    <TextField id="email" type="email" label="Email" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setEmail(e.target.value) }} />
+                        <TextField id="email" type="email" label="Email" required variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setEmail(e.target.value) }} />
 
-                    <TextField id="telefone" type="text" label="Telefone" variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setTelefone(e.target.value) }} />
+                        <TextField id="telefone" type="text" label="Telefone" required variant="outlined" sx={{ marginBottom: "2rem", width: "50%" }} onChange={(e) => { setTelefone(e.target.value) }} />
 
-                    <TextField id="senha" type={tipo} label="Senha" variant="outlined" sx={{ marginBottom: "4rem", width: "50%" }} onChange={(e) => { setSenha(e.target.value) }} InputProps={{
-                        endAdornment: (tipo == "text" ? <VisibilityOffRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} /> : <RemoveRedEyeRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} />)
-                    }} />
+                        <TextField id="senha" type={tipo} label="Senha" required variant="outlined" sx={{ marginBottom: "4rem", width: "50%" }} onChange={(e) => { setSenha(e.target.value) }} InputProps={{
+                            endAdornment: (tipo == "text" ? <VisibilityOffRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} /> : <RemoveRedEyeRoundedIcon onClick={mostrarSenha} sx={{ color: "#666", cursor: "pointer" }} />)
+                        }} />
 
-                    <div id="box02">
-                        <Button variant="contained" onClick={() => cadastrar()}>Confirmar</Button>
-                    </div>
+                        <div id="box02">
+                            <Button type="submit" variant="contained" onClick={() => cadastrar()}>Confirmar</Button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

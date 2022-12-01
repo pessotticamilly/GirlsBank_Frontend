@@ -31,20 +31,20 @@ function Inicio() {
     const [valor, setValor] = useState(0);
     const [numeroContaTrans, setNumeroContaTrans] = useState();
     const [pessoa, setPessoa] = useState(JSON.parse(localStorage.getItem("PESSOA")));
-    const [conta, setConta] = useState({numero: 0, saldo: 0, pessoa: {id: 0, nomeCompleto: "", cpf: 0, senha: "", telefone: 0, email: ""}});
+    const [conta, setConta] = useState({ numero: 0, saldo: 0, pessoa: { id: 0, nomeCompleto: "", cpf: 0, senha: "", telefone: 0, email: "" } });
 
     useEffect(() => {
         axios.get(`http://localhost:8080/girlsbank/conta/pessoa/${pessoa.id}`)
-        .then((response) => {
-            setConta(response.data)
-        })
+            .then((response) => {
+                setConta(response.data)
+            })
     }, [])
 
     function handleClick(_operacao) {
         setOperacao(_operacao);
         setOpen(true);
     };
-    
+
     function modal() {
         return (
             <div id="fundo" open={true}>
@@ -61,16 +61,16 @@ function Inicio() {
             </div>
         );
     };
-    
+
     function verOperacao() {
-        if(operacao === "pagarConta") {
+        if (operacao === "pagarConta") {
             return depositar(false);
         };
 
         if (operacao === "transferir") {
             return transferir();
         };
-        
+
         if (operacao === "depositar") {
             return depositar(true);
         };
@@ -84,21 +84,21 @@ function Inicio() {
         };
 
         axios.put(`http://localhost:8080/girlsbank/conta/editar/${conta.numero}`, contaPagante)
-        .then((response) => {
-        });
+            .then((response) => {
+            });
 
         const contaRecebedor = await axios.get(`http://localhost:8080/girlsbank/conta/listar/${numeroContaTrans}`)
-        .then(response => response.data)
+            .then(response => response.data)
 
         contaRecebedor.saldo += valor;
 
         axios.put(`http://localhost:8080/girlsbank/conta/editar/${contaRecebedor.numero}`, contaRecebedor)
-        .then((response) => {
-        });
+            .then((response) => {
+            });
 
         window.location.reload();
     }
-    
+
     function transferir() {
         return (
             <div id="operacao">
@@ -106,15 +106,17 @@ function Inicio() {
                     <p>Transferir</p>
                 </div>
 
-                <TextField id="numeroConta" type="number" label="Número da conta" value={numeroContaTrans} onChange={(e) => setNumeroContaTrans(e.target.value)} variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
+                <form>
+                    <TextField id="numeroConta" type="number" label="Número da conta" required onChange={(e) => setNumeroContaTrans(e.target.value)} variant="outlined" sx={{ marginBottom: "2rem", width: "20vw" }} />
 
-                <TextField id="valor" type="number" label="Valor" value={valor} onChange={(e) => setValor(parseInt(e.target.value))} variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
+                    <TextField id="valor" type="number" label="Valor" required onChange={(e) => setValor(parseInt(e.target.value))} variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} />
 
-                <Button id="entrar" variant="contained" onClick={transferencia}>Confirmar</Button>
+                    <Button id="entrar" type="submit" variant="contained" onClick={transferencia}>Confirmar</Button>
+                </form>
             </div>
         );
     };
-    
+
     useEffect(() => {
     }, [conta, saldo])
 
@@ -126,8 +128,8 @@ function Inicio() {
         }
 
         axios.put(`http://localhost:8080/girlsbank/conta/editar/${conta.numero}`, contaPut)
-        .then((response) => {
-        });
+            .then((response) => {
+            });
 
         window.location.reload();
     };
@@ -139,9 +141,11 @@ function Inicio() {
                     <p>{deposito ? "Depositar" : "Pagar Conta"}</p>
                 </div>
 
-                <TextField id="valor" type="number" label="Valor" variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} value={valor} onChange={(e) => { setValor(parseInt(e.target.value)) }} />
+                <form>
+                    <TextField id="valor" type="number" label="Valor" required variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} onChange={(e) => { setValor(parseInt(e.target.value)) }} />
 
-                <Button id="entrar" variant="contained" onClick={() => deposito(_deposito)} >Confirmar</Button>
+                    <Button id="entrar" type="submit" variant="contained" onClick={() => deposito(_deposito)} >Confirmar</Button>
+                </form>
             </div>
         );
     };

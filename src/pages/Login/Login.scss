@@ -29,5 +29,14 @@
             margin-bottom: 2rem;
             width: 10vw;
         }
+
+        form {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            justify-content: center;
+            width: 100%;
+        }
     }
 }
