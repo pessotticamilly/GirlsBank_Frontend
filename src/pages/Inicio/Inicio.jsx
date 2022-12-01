@@ -196,7 +196,7 @@ function Inicio() {
 
             <main>
                 <div id="text01">
-                    <p>Bom dia, {conta.pessoa.nomeCompleto ?? ""}!</p>
+                    <p>Bom dia, {conta.pessoa.nomeCompleto.split(" ")[0] ?? ""}!</p>
                 </div>
 
                 <div id="container01">
