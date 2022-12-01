@@ -1,14 +1,16 @@
 import './Cadastro.scss';
 
+import axios from 'axios';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
+import { useState } from 'react';
 
 // Icones
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useState } from 'react';
-import axios from 'axios';
+import RemoveRedEyeRoundedIcon from "@mui/icons-material/RemoveRedEyeRounded";
+import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 
 function Cadastro() {
     const [nome, setNome] = useState("");
