@@ -85,22 +85,16 @@ function Inicio() {
 
         axios.put(`http://localhost:8080/girlsbank/conta/editar/${conta.numero}`, contaPagante)
         .then((response) => {
-            console.log("Contapagante", response);
         });
-
 
         const contaRecebedor = await axios.get(`http://localhost:8080/girlsbank/conta/listar/${numeroContaTrans}`)
         .then(response => response.data)
-        
-        console.log("ContaRecebedorAxios", contaRecebedor);
 
         contaRecebedor.saldo += valor;
 
         axios.put(`http://localhost:8080/girlsbank/conta/editar/${contaRecebedor.numero}`, contaRecebedor)
         .then((response) => {
-            console.log("Contarecebedor", response);
         });
-
 
         window.location.reload();
     }
@@ -122,8 +116,6 @@ function Inicio() {
     };
     
     useEffect(() => {
-        console.log(conta);
-        console.log(saldo);
     }, [conta, saldo])
 
     function deposito(deposito) {
@@ -133,11 +125,8 @@ function Inicio() {
             pessoa: conta.pessoa
         }
 
-        console.log("conta", contaPut);
-
         axios.put(`http://localhost:8080/girlsbank/conta/editar/${conta.numero}`, contaPut)
         .then((response) => {
-            console.log(response);
         });
 
         window.location.reload();
