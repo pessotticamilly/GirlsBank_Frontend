@@ -133,17 +133,17 @@ function Inicio() {
         window.location.reload();
     };
 
-    function depositar(_deposito) {
+    function depositar(depositoParam) {
         return (
             <div id="operacao">
                 <div id="text02">
-                    <p>{deposito ? "Depositar" : "Pagar Conta"}</p>
+                    <p>{depositoParam ? "Depositar" : "Pagar Conta"}</p>
                 </div>
 
                 <form>
-                    <TextField id="valor" type="number" label="Valor" error={valor > conta.saldo} helperText={valor > conta.saldo && "Saldo insuficiente"} required variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} onChange={(e) => { setValor(parseInt(e.target.value)) }} />
+                    {depositoParam ? <TextField id="valor" type="number" label="Valor" required variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} onChange={(e) => { setValor(parseInt(e.target.value)) }} /> : <TextField id="valor" type="number" label="Valor" error={valor > conta.saldo} helperText={valor > conta.saldo && "Saldo insuficiente"}required variant="outlined" sx={{ marginBottom: "4rem", width: "20vw" }} onChange={(e) => { setValor(parseInt(e.target.value)) }} />}
 
-                    <Button id="entrar" type="submit" variant="contained" onClick={() => deposito(_deposito)} >Confirmar</Button>
+                    <Button id="entrar" type="submit" variant="contained" onClick={() => deposito(depositoParam)} >Confirmar</Button>
                 </form>
             </div>
         );

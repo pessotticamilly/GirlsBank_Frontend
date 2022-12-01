@@ -61,7 +61,7 @@ function Login() {
             <div id="container02">
                 <img src={Logo} alt="Logo" />
 
-                <form>
+                {/* <form> */}
                     <TextField id="cpf" type="number" label="CPF" required variant="outlined" sx={{ marginBottom: "2rem", width: "20%" }} onChange={(e) => { setCpf(e.target.value) }} />
 
                     <TextField id="senha" type={tipo} label="Senha" required variant="outlined" sx={{ marginBottom: "4rem", width: "20%" }} onChange={(e) => { setSenha(e.target.value) }} InputProps={{
@@ -69,7 +69,7 @@ function Login() {
                     }} />
 
                     <Button id="entrar" type="submit" variant="contained" sx={{ marginBottom: "1rem" }} onClick={() => entrar()}>Entrar</Button>
-                </form>
+                {/* </form> */}
 
                 <p>É novo por aqui?</p>
                 <Link href="/cadastro" underline="hover">Cadastrar-se</Link>
