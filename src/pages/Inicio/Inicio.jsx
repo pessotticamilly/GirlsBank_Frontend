@@ -33,7 +33,7 @@ function Inicio() {
     const [conta, setConta] = useState({ numero: 0, saldo: 0, pessoa: { id: 0, nomeCompleto: "", cpf: 0, senha: "", telefone: 0, email: "" } });
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/girlsbank/conta/pessoa/${pessoa.id}`)
+        axios.get(`http://localhost:8086/girlsbank/conta/pessoa/${pessoa.id}`)
             .then((response) => {
                 setConta(response.data)
             })
@@ -82,16 +82,16 @@ function Inicio() {
             pessoa: conta.pessoa
         };
 
-        axios.put(`http://localhost:8080/girlsbank/conta/editar/${conta.numero}`, contaPagante)
+        axios.put(`http://localhost:8086/girlsbank/conta/editar/${conta.numero}`, contaPagante)
             .then((response) => {
             });
 
-        const contaRecebedor = await axios.get(`http://localhost:8080/girlsbank/conta/listar/${numeroContaTrans}`)
+        const contaRecebedor = await axios.get(`http://localhost:8086/girlsbank/conta/listar/${numeroContaTrans}`)
             .then(response => response.data)
 
         contaRecebedor.saldo += valor;
 
-        axios.put(`http://localhost:8080/girlsbank/conta/editar/${contaRecebedor.numero}`, contaRecebedor)
+        axios.put(`http://localhost:8086/girlsbank/conta/editar/${contaRecebedor.numero}`, contaRecebedor)
             .then((response) => {
             });
 
@@ -126,7 +126,7 @@ function Inicio() {
             pessoa: conta.pessoa
         }
 
-        axios.put(`http://localhost:8080/girlsbank/conta/editar/${conta.numero}`, contaPut)
+        axios.put(`http://localhost:8086/girlsbank/conta/editar/${conta.numero}`, contaPut)
             .then((response) => {
             });
 

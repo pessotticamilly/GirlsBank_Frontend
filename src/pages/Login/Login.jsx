@@ -36,7 +36,7 @@ function Login() {
 
     async function entrar() {
         try {
-            let response = await axios.post("http://localhost:8080/girlsbank/pessoa/login", pessoa)
+            let response = await axios.post("http://localhost:8086/girlsbank/pessoa/login", pessoa)
             if (response.status == 200) {
                 localStorage.setItem("PESSOA", JSON.stringify(response.data))
                 window.location.href = "/inicio"

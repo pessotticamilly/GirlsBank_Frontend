@@ -38,7 +38,7 @@ function Cadastro() {
 
     async function cadastrar() {
         try {
-            const response = await axios.post("http://localhost:8080/girlsbank/pessoa/cadastrar", pessoa);
+            const response = await axios.post("http://localhost:8086/girlsbank/pessoa/cadastrar", pessoa);
             if (response.status == 200) {
                 window.location.href = "/login";
             }
